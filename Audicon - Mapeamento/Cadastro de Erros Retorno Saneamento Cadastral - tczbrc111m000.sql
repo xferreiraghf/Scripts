@@ -1,5 +1,5 @@
 ****************************** field section *********************************
-field.tczbr011.moti.c: * CAMPO - MOTIVO DE STATUS (tczbr011.moti.c) */
+field.tczbr011.moti.c: /* CAMPO - MOTIVO DE STATUS (tczbr011.moti.c) */
 before.zoom:
 	on case tczbr011.acao.c /* CAMPO - AÇÃO (tczbr011.acao.c) */
 	case tczbr.reto.c.canc:
