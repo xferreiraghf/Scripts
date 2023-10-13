@@ -1,2 +1,3 @@
-# Scripts
- Local de armazenamento dos scripts criados para demanda dos usuários
+# 👨‍💻 Scripts
+
+Repositório dos Scripts Desenvolvidos para Atender às Necessidades dos Usuários da Brandili.
