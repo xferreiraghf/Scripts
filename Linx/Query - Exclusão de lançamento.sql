@@ -1,0 +1,16 @@
+/* 1. Desvincular o CTB do lançamento da nota fiscal. */
+
+BEGIN TRAN
+UPDATE LOJA_NOTA_FISCAL
+	SET CTB_LANCAMENTO = NULL,
+	CTB_ITEM = NULL
+WHERE CODIGO_FILIAL =   '000015'
+	AND NF_NUMERO = '000006225'
+	AND SERIE_NF = '1'
+
+COMMIT
+
+/* 2. Excluir o CTB do lançamento. */
+
+DELETE CTB_LANCAMENTO
+	WHERE LANCAMENTO = 207451
