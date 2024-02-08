@@ -12,7 +12,7 @@ SELECT
     parceiro."Cod. status",
     parceiro."Motivo Status",
     parceiro."Regional",
-    parceiro."Cód.Rep",
+    parceiro."Cod. Representante",
     parceiro."Representante"
 FROM (
     SELECT 
