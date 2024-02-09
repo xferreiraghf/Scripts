@@ -1,13 +1,14 @@
 SELECT 
     parceiro."Parceiro",
-    parceiro."Título",
+    parceiro."Cod. título",
+	parceiro."Título",
     parceiro."Razão social",
     parceiro."Tipo entidade",
     parceiro."Entidade",
     parceiro."UF",
     parceiro."Cidade",
     parceiro."Data criação",
-    parceiro."Data modificação",
+    parceiro."Data supensão",
     parceiro."Status",
     parceiro."Cod. status",
     parceiro."Motivo Status",
@@ -17,14 +18,14 @@ SELECT
 FROM (
     SELECT 
         pn.t$bpid AS "Parceiro",
-        pn.t$ctit AS "Título",
+        pn.t$ctit AS "Cod. título",
         pn.t$nama AS "Razão social",
         e.t$ftyp$l AS "Tipo entidade",
         e.t$fovn$l AS "Entidade",
         e.t$cste AS "UF",
         e.t$dsca AS "Cidade",
-        pn.t$crdt AS "Data criação",
-        ha.t$date$c AS "Data modificação",
+        TO_CHAR(pn.t$crdt, 'DD/MM/YYYY') AS "Data criação",
+        TO_CHAR(ha.t$date$c, 'DD/MM/YYYY') AS "Data supensão",
 
         DECODE(pn.t$prst,
         2, 'Ativo',
@@ -34,6 +35,21 @@ FROM (
         ) AS "Status",
 
         pn.t$code$c AS "Cod. status",
+		
+		DECODE(pn.t$ctit,
+		001, 'CLIENTE',
+		002, 'FORNECEDOR',
+		003, 'REPRESENTANTE',
+		004, 'TRANSPORTADORA',
+		005, 'PREPOSTO',
+		006, 'FACÇÃO',
+		007, 'EMPRESA DO GRUPO',
+		008, 'PROSPECT',
+		009, 'FUNCIONÁRIO',
+		010, 'EXTERIOR',
+		011, 'CONSUMIDOR',
+		012, 'CLIENTE/FORNECEDOR'
+		) AS "Título",
 
         DECODE(cc.t$repr$c,
                       'R00035', 'Sul',
