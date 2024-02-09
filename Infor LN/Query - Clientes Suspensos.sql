@@ -8,7 +8,7 @@ SELECT
     parceiro."UF",
     parceiro."Cidade",
     parceiro."Data criação",
-    parceiro."Data supensão",
+    parceiro."Data suspensão",
     parceiro."Status",
     parceiro."Cod. status",
     parceiro."Motivo Status",
@@ -25,7 +25,7 @@ FROM (
         e.t$cste AS "UF",
         e.t$dsca AS "Cidade",
         TO_CHAR(pn.t$crdt, 'DD/MM/YYYY') AS "Data criação",
-        TO_CHAR(ha.t$date$c, 'DD/MM/YYYY') AS "Data supensão",
+        TO_CHAR(ha.t$date$c, 'DD/MM/YYYY') AS "Data suspensão",
 
         DECODE(pn.t$prst,
         2, 'Ativo',
