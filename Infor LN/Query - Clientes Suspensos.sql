@@ -9,6 +9,7 @@ SELECT
     parceiro."Cidade",
     parceiro."Data criação",
     parceiro."Data suspensão",
+    parceiro."Suspenso por",
     parceiro."Status",
     parceiro."Cod. status",
     parceiro."Motivo Status",
@@ -24,6 +25,7 @@ FROM (
         e.t$fovn$l AS "Entidade",
         e.t$cste AS "UF",
         e.t$dsca AS "Cidade",
+        fs.t$name AS "Suspenso por",
         TO_CHAR(pn.t$crdt, 'DD/MM/YYYY') AS "Data criação",
         TO_CHAR(ha.t$date$c, 'DD/MM/YYYY') AS "Data suspensão",
 
@@ -54,23 +56,23 @@ FROM (
         DECODE(cc.t$repr$c,
 	'R00035', 'Sul',
 	'R00158', 'Sul',
-	'R00159', 'Sul',					  
-	'R00038', 'Sul',					  
-	'R00126', 'Sul',					  
-	'R00036', 'Sul',					  
-	'R00032', 'Sul',					  
-	'R00129', 'Sul',					  
-	'R00203', 'Sul',					  
-	'R00201', 'Sul',					  
+	'R00159', 'Sul',            
+	'R00038', 'Sul',            
+	'R00126', 'Sul',            
+	'R00036', 'Sul',            
+	'R00032', 'Sul',            
+	'R00129', 'Sul',            
+	'R00203', 'Sul',            
+	'R00201', 'Sul',            
 	'R00040', 'Sul',
 	'R00072', 'Sul',
 	'R00041', 'Sul',
 	'R00232', 'Sul',
 	'R00165', 'Sul',
-	'R00048', 'Sul',					  
+	'R00048', 'Sul',            
 	'R00229', 'Sul',
 	'R00219', 'Sul',
-	'R00058', 'Sul',					  
+	'R00058', 'Sul',            
 	'R00149', 'Centro',
 	'R00223', 'Centro',
 	'R00050', 'Centro',
@@ -137,7 +139,7 @@ FROM (
         cc.t$repr$c AS "Cod. Representante",
         dp.t$dsca   AS "Representante",
         
-        	CASE 
+          CASE 
   WHEN pn.t$code$c = 1
    AND pn.t$prst = 2 THEN 'CLIENTE ATIVO PRÓXIMO (X)'
    
@@ -252,6 +254,7 @@ FROM (
     INNER JOIN igrppr.ttczbr023001 ha ON pn.t$bpid = ha.t$bpid$c
     LEFT JOIN igrppr.ttdzbr003001 cc ON cc.t$bpid$c = pn.t$bpid
     LEFT JOIN igrppr.ttcmcs065001 dp ON dp.t$cwoc = cc.t$repr$c
+    LEFT JOIN igrppr.ttgbrg835001 fs ON ha.t$user$c = fs.t$busr
     WHERE 
         cc.t$ativ$c LIKE '1' 
         AND cc.t$styp$C LIKE '002'
