@@ -12,9 +12,9 @@ SELECT
     parceiro."Status",
     parceiro."Cod. status",
     parceiro."Motivo Status",
-    parceiro."Regional",
     parceiro."Cod. Representante",
-    parceiro."Representante"
+    parceiro."Representante",
+    parceiro."Regional"
 FROM (
     SELECT 
         pn.t$bpid AS "Parceiro",
