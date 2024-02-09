@@ -1,7 +1,7 @@
 SELECT 
     parceiro."Parceiro",
     parceiro."Cod. título",
-	parceiro."Título",
+    parceiro."Título",
     parceiro."Razão social",
     parceiro."Tipo entidade",
     parceiro."Entidade",
