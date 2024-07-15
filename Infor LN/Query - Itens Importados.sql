@@ -37,8 +37,10 @@ igrppr.ttdrec941001 ldf  /* Linha doc. fiscal */
 WHERE drf.t$fire$l = ldf.t$fire$l
 AND ldf.t$opor$l IN ('2101', '2116', '2122') /* CFOP */
 AND ldf.t$sour$l IN ('2', '3', '8', '9')     /* Origem mercadoria */
+AND drf.t$stat$l NOT IN ('6') /* Não trazer recebimento com status estornado */
+AND ldf.t$iprt$l > '1' /* Preço total do item */
 AND drf.t$odat$l BETWEEN (SELECT SYSDATE FROM DUAL) - 7 AND (SELECT SYSDATE FROM DUAL) - 1 /* Captura a informação da semana anterior */
 
 ORDER BY drf.t$odat$l /* Data fiscal */
 
-
+/* BY FERREIRA */
