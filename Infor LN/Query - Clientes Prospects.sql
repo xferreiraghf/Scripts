@@ -1,4 +1,4 @@
-/* QUERY - Clientes Prospects */
+ /* QUERY - Clientes Prospects */
 
 SELECT 
 pn.t$bpid AS "Parceiro",
@@ -184,7 +184,7 @@ igrppr.ttccom110001 pc		/* Parceiro de negócios cliente	*/
 WHERE pn.t$cadr = ad.t$cadr
 AND pn.t$bpid = pc.t$ofbp
 AND pn.t$cadr = pc.t$cadr
-AND pn.t$ctit = '008'
+AND pn.t$ctit = '008' /* Título: Prospect */
 
 
 
