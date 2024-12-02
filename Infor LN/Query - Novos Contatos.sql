@@ -1,7 +1,7 @@
 Select a.t$ccnt as "Contato",
        a.t$bpid as "Parceiro",
        b.t$nama as "Razão social",
-       b.t$fovn$l as "Entidade fiscal",
+       b.t$fovn$l as "Entidade",
        b.t$cste as "Estado",
        a.t$fuln as "Nome completo",
        a.t$ddd1$c as DDD,
@@ -16,6 +16,8 @@ Select a.t$ccnt as "Contato",
        decode(e.t$repr$c,
               'R00035',
               'Sul',
+			  'R00038',
+	          'Sul',	
               'R00158',
               'Sul',
               'R00159',
@@ -50,7 +52,13 @@ Select a.t$ccnt as "Contato",
               'Sul',
               'R00219',
               'Sul',
-              'R00149',
+			  'R00236',
+			  'Sul',
+			  'R00232',
+			  'Sul',
+			  'R00253',
+			  'Sul',
+			  'R00149',
               'Centro',
               'R00223',
               'Centro',
@@ -86,6 +94,14 @@ Select a.t$ccnt as "Contato",
               'Centro',
               'R00103',
               'Centro',
+			  'R00260',
+			  'Centro',
+			  'R00234',
+			  'Centro',
+			  'R00239',
+			  'Centro',
+			  'R00250',
+			  'Centro',
               'R00051',
               'Norte/Nordeste',
               'R00092',
@@ -112,6 +128,22 @@ Select a.t$ccnt as "Contato",
               'Norte/Nordeste',
               'R00209',
               'Norte/Nordeste',
+			  'R00242',
+			  'Norte/Nordeste',
+			  'R00123',
+			  'Norte/Nordeste',
+			  'R00262',
+			  'Norte/Nordeste',
+			  'R00263',
+			  'Norte/Nordeste',
+			  'R00261',
+			  'Norte/Nordeste',
+			  'R00247',
+			  'Norte/Nordeste',
+			  'R00266',
+			  'Norte/Nordeste',
+			  'R00124',
+			  'Norte/Nordeste',
               'R00078',
               'São Paulo',
               'R00118',
@@ -139,6 +171,12 @@ Select a.t$ccnt as "Contato",
               'R00224',
               'São Paulo',
               'R00111',
+              'São Paulo',
+			  'R00048',
+              'São Paulo',
+			  'R00073',
+              'São Paulo',
+			  'R00267',
               'São Paulo',
               'R00204',
               'Brás',
@@ -194,18 +232,18 @@ Select a.t$ccnt as "Contato",
    and f.t$cwoc = e.t$repr$c
    and e.t$bpid$c = d.t$bpid
    and a.t$crus = g.t$user
-   and e.t$ativ$c like '1' /*Representante Ativo*/
-   and e.t$styp$C like '002' /*Confecção*/
-   And d.t$ctit like '001' /*Buscar apenas clientes*/
+   and e.t$ativ$c = '1' /*Representante Ativo*/
+   and e.t$styp$C = '002' /*Confecção*/
+   And d.t$ctit = '001' /*Buscar apenas clientes*/
    And a.t$ccnt like 'C%' /*Inicial Contato*/
-   and b.t$ccty like 'BRA'
+   and b.t$ccty = 'BRA'
    and a.t$crdt BETWEEN (SELECT SYSDATE FROM DUAL) - 7 AND
        (SELECT SYSDATE FROM DUAL) - 1 /*Busca semana anterior*/
 
  order by a.t$bpid /*Ordenar pelo B do Parceiro*/
 
-/*By Ferreira - Atualizado: 
-15/08/2023
-* Ajuste no formato da data
-* Adicionado o campo representante
-* Regionais puxando pelo representante*/
+/* By Ferreira */
+ 
+/* Atualizado: 15/08/2023 | Ajuste no formato da data / Adicionado o campo representante / Regionais puxando pelo representante */
+/* Atualizado: 02/12/2024 | Atualização na busca de novos representantes */ 
+ 
