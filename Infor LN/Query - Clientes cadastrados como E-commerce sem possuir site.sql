@@ -6,7 +6,7 @@ select a.t$bpid   as "Parceiro",
        c.t$fovn$l as "Entidade fiscal",
        b.t$cbrn   as "Segmento",
        c.t$cste   as "Estado",
-       c.t$namf   as "Cidade",
+       c.t$dsca	  as "Cidade",
        a.t$usid   as "Criado por",
        TO_CHAR(a.t$crdt, 'DD/MM/YYYY') AS "Data criação",
        c.t$inet   as "Site",
@@ -188,19 +188,21 @@ select a.t$bpid   as "Parceiro",
               'IBTech',
               'Outros') as "Origem"
 
-  from igrppr.ttccom100001 a, /* Parceiros de negócios */
-       igrppr.ttccom110001 b, /* Parceiros de negócios clientes */
-       igrppr.ttccom130001 c, /* Endereços */
-       igrppr.ttdzbr003001 d, /* Cadastro de Atendimento aos Clientes */
-       igrppr.ttcmcs065001 e /* Departamentos */
+  from 
+  		igrppr.ttccom100001 a, /* Parceiros de negócios */
+       	igrppr.ttccom110001 b, /* Parceiros de negócios clientes */
+       	igrppr.ttccom130001 c, /* Endereços */
+       	igrppr.ttdzbr003001 d, /* Cadastro de Atendimento aos Clientes */
+       	igrppr.ttcmcs065001 e /* Departamentos */
 
- where a.t$cadr = b.t$cadr
+ where 
+ 	a.t$cadr = b.t$cadr
    and b.t$cadr = c.t$cadr
    and e.t$cwoc = d.t$repr$c
    and d.t$bpid$c = a.t$bpid
-   and d.t$ativ$c like '1' /* Busca apenas Representantes Ativo */
-   and d.t$styp$C like '002' /* Confecção */
-   and b.t$cbrn like '22003' /* Segmento definido */
+   and d.t$ativ$c = '1' /* Busca apenas Representantes Ativo */
+   and d.t$styp$C = '002' /* Confecção */
+   and b.t$cbrn = '22003' /* Segmento definido */
    and c.t$inet like ' '
 
  Order by TO_CHAR(a.t$crdt, 'DD/MM/YYYY')  /* Ordenar por Data de Criação */
@@ -210,3 +212,6 @@ select a.t$bpid   as "Parceiro",
  
 /* Atualizado: 14/08/2023 | Atualização na busca de novos representantes */ 
 /* Atualizado: 16/09/2024 | Atualização na busca de novos representantes */ 
+/* Atualizado: 02/12/2024 | Substituição do campo 'NAMF' pelo campo 'DSCA', relacionado à descrição da cidade. */ 
+ 
+ 
