@@ -29,7 +29,6 @@ SELECT
 	ov.t$orno as "Ordem",
 	ov.t$pofv$c as "Pedido",
 	ov.t$odat as "Data da ordem",
-	ov.t$corg as "Origem",
 	lp.t$cprj$c as "Coleção",
 	ov.t$oamt as "Valor da ordem",
 	ov.t$reli$c as "Preposto interno",
