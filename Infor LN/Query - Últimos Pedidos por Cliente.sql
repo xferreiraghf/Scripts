@@ -286,9 +286,9 @@ FROM
     LEFT JOIN igrppr.ttdsls400001 ov ON ov.t$orno = up.Pedido 	/* Ordens de venda */
     LEFT JOIN igrppr.ttcmcs034001 lp ON lp.t$cplt = ov.t$cpls 	/* Lista de preço */
 WHERE
-    ca.t$ativ$c LIKE '1' 	/* Busca apenas Representantes Ativos */
-    AND pn.t$ctit LIKE '001' 	/* Buscar apenas por Clientes */
-    AND ca.t$styp$C LIKE '002' 	/* Confecção */
+    ca.t$ativ$c = '1' 	/* Busca apenas Representantes Ativos */
+    AND pn.t$ctit = '001' 	/* Buscar apenas por Clientes */
+    AND ca.t$styp$C = '002' 	/* Confecção */
     AND pn.t$prst IN ('2', '3') 	/* Ativos/Inativos */
 ORDER BY 
     pn.t$bpid
