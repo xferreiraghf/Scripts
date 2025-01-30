@@ -28,7 +28,7 @@ SELECT
 	dp.t$dsca as "Representante",
 	ov.t$orno as "Ordem",
 	ov.t$pofv$c as "Pedido",
-	ov.t$odat as "Data da ordem",
+	TO_CHAR(ov.t$odat, 'DD/MM/YYYY') as "Data da ordem",
 	lp.t$cprj$c as "Coleção",
 	ov.t$oamt as "Valor da ordem",
 	ov.t$reli$c as "Preposto interno",
